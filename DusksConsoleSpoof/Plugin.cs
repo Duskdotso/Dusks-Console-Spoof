@@ -55,11 +55,12 @@ namespace DusksConsoleSpoof
 
         #endregion
         
-        Rect windowRect = new Rect(20, 20, 250, 160);
+        Rect windowRect = new Rect(20, 20, 250, 220);
 
         void OnGUI()
         {
-            windowRect = GUI.Window(0, windowRect, Window, $"Dusk's Console Spoof V{Version}");
+            windowRect.height = customSize ? 230 : 160;
+            windowRect = GUI.Window(1, windowRect, Window, $"Dusk's Console Spoof V{Version}");
         }
 
         private static string text = "";
@@ -74,9 +75,9 @@ namespace DusksConsoleSpoof
 
             GUILayout.Label($"Current Text: {ActualTextForConsole}");
             if (customSize)
-                GUILayout.Label($"Custom Size: {ActualSize}");
+                GUILayout.Label($"Current Size: {ActualSize}");
             
-            GUILayout.Space(20);
+            GUILayout.Space(10);
             
             text = GUILayout.TextField(text);
             if (GUILayout.Button("Set Text"))
